@@ -176,7 +176,6 @@ Start-Process -FilePath $appcmdexe -ArgumentList $appcmdargs -Wait"
                                "AzureCloudServiceName")
                 .WithParameter("DiskStore", ParameterType.String, "Name of Azure disk storage account.",
                                "AzureStorageName")
-                .WithParameter("CloudDeploymentId", ParameterType.String, "Id of Azure cloud deployment.", "Guid")
                 .WithParameter("VMSize", ParameterType.String, "Size of the server VMs.", "AzureRoleSize",
                                p => p.WithDefaultValue("Small"))
                 .WithParameter("AdminName", ParameterType.String, "Name of local administrator account.", "username",
