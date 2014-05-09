@@ -1,6 +1,7 @@
 {
   "Name": "Brewmaster.ARRServerFarm",
   "Description": "Create a farm of ARR servers to act as reverse proxy",
+  "Version": "0.1.0",
   "Parameters": [
     {
       "Name": "Region",
