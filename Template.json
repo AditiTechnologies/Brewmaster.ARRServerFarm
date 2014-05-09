@@ -100,7 +100,6 @@
       "Region": "{{Region}}",
       "Description": "Brewmaster ARR Cloud Service",
       "Deployment": {
-        "Name": "{{CloudDeploymentId}}",
         "VirtualMachines": [
           {
             "Name": "{{ServerNamePrefix}}",
