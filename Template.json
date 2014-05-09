@@ -1,7 +1,6 @@
 {
   "Name": "Brewmaster.ArrReverseProxy",
   "Description": "ArrReverseProxy",
-  "Version": "0.1.0",
   "Parameters": [
     {
       "Name": "Region",
