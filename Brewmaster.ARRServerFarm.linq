@@ -8,13 +8,11 @@
   </Connection>
   <Reference Relative="..\..\BrewMaster\brewmaster\src\Worker\bin\Debug\Brewmaster.TemplateSDK.Contracts.dll">E:\Git_Local\BrewMaster\brewmaster\src\Worker\bin\Debug\Brewmaster.TemplateSDK.Contracts.dll</Reference>
   <Reference Relative="..\..\BrewMaster\brewmaster\src\Worker\bin\Debug\Brewmaster.TemplateSDK.dll">E:\Git_Local\BrewMaster\brewmaster\src\Worker\bin\Debug\Brewmaster.TemplateSDK.dll</Reference>
-  <Namespace>Brewmaster.TemplateSDK</Namespace>
-  <Namespace>Brewmaster.TemplateSDK.Builders</Namespace>
   <Namespace>Brewmaster.TemplateSDK.Contracts</Namespace>
   <Namespace>Brewmaster.TemplateSDK.Contracts.Fluent</Namespace>
   <Namespace>Brewmaster.TemplateSDK.Contracts.Models</Namespace>
+  <Namespace>Brewmaster.TemplateSDK.Contracts.Serialization</Namespace>
   <Namespace>Brewmaster.TemplateSDK.Contracts.Validation</Namespace>
-  <Namespace>Brewmaster.TemplateSDK.Serialization</Namespace>
 </Query>
 
 void Main()
@@ -24,14 +22,14 @@ void Main()
                 .WithAffinityGroup("{{AffinityGroup}}", "{{Region}}")
 				.WithStorageAccount("{{DiskStore}}")
 				.WithCloudService("{{CloudService}}","Brewmaster ARR Cloud Service",
-					cs=>cs.WithDeployment("{{CloudDeploymentId}}",d=>
+					cs=>cs.WithDeployment(null,d=>
 					d.UsingDefaultDiskStorage("{{DiskStore}}")
 						.WithVirtualMachine("{{ServerNamePrefix}}","{{VmSize}}","arr-avset",vm=>
 											vm.WithWindowsConfigSet("vmadmin")
-											.UsingRole("ArrServer")))
+											.UsingConfigSet("ArrServer")))
 				)
 				.WithCredential("vmadmin","{{AdminName}}","{{AdminPassword}}")
-				.WithRole("ArrServer", "ARR Server",
+				.WithConfigSet("ArrServer", "ARR Server",
                           r =>
                           r.WithEndpoint("HTTP", 80, 80,
                                          new EndpointLoadBalancerProbe
@@ -191,5 +189,5 @@ Start-Process -FilePath $appcmdexe -ArgumentList $appcmdargs -Wait"
                                p => p.WithDefaultValue("2")
                                      .WithLimits(2, 100)
                                      .WithRegexValidation(@"^\d+$", "Must enter a positive integer between 2 and 100."));
-	template.ToJson().Dump();
+	template.Save(@"E:\WorkFiles\ARR");
 }
