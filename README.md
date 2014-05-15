@@ -1,5 +1,3 @@
-Brewmaster.ARRServerFarm
-========================
 ###Overview
 Application Request Routing (ARR) extends IIS and enables powerful routing rules based on URL, HTTP Headers and Server Variables.
 
