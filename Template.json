@@ -1,6 +1,6 @@
 {
-  "Name": "Brewmaster.ArrReverseProxy",
-  "Description": "ArrReverseProxy",
+  "Name": "ARRReverseProxy",
+  "Description": "Creates a IIS reverse proxy server farm using ARR module.",
   "Version": "0.1.0",
   "Parameters": [
     {
